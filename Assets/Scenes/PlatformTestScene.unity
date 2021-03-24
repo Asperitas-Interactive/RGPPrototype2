@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 2035559877}
   - component: {fileID: 2035559881}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: MovingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035559876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.27}
+  m_LocalPosition: {x: 0, y: 0, z: 2.31}
   m_LocalScale: {x: 3.5739, y: 1, z: 3.7573}
   m_Children: []
   m_Father: {fileID: 0}
@@ -407,4 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a49360771497b498c7b45e4de727f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: {x: -1, y: -1, z: -1}
+  DisplacementPos: {x: 5, y: 0, z: 0}
+  DisplacementNeg: {x: -2, y: 0, z: 0}
+  VectorSpeed: {x: 1, y: 0, z: 0}
