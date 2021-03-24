@@ -17,10 +17,6 @@ public class MovePlat : MonoBehaviour
     {
         DestinationMax = transform.position + DisplacementPos;
         DestinationMin = transform.position + DisplacementNeg;
-        
-
-
-        Debug.Log(DestinationMax);
     }
 
     // Update is called once per frame
