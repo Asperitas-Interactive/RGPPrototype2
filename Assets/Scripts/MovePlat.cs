@@ -37,7 +37,7 @@ public class MovePlat : MonoBehaviour
     //Check if it reached its destination
     void DestinationReach()
     {
-        if(transform.position.x == DestinationMax.x && transform.position.y == DestinationMax.y && transform.position.z == DestinationMax.z)
+        if (transform.position.x == DestinationMax.x && transform.position.y == DestinationMax.y && transform.position.z == DestinationMax.z)
         {
             VectorSpeed = -VectorSpeed;
         }
@@ -46,15 +46,5 @@ public class MovePlat : MonoBehaviour
         {
             VectorSpeed = -VectorSpeed;
         }
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        defaultPos =  transform.position;
-    }
-
-    public void OnCollisionStay(Collision collision)
-    {
-        collision.gameObject.transform.position += defaultPos - transform.position;
     }
 }
