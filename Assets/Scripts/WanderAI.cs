@@ -14,7 +14,7 @@ public class WanderAI : MonoBehaviour
 
     private float timer;
 
-    private void OnEnable()
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         origin = transform.position;
