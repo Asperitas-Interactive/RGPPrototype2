@@ -21,22 +21,22 @@ public class MovePlat : MonoBehaviour
         DestinationMin = transform.position + DisplacementNeg;
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision coll)
     {
-        if (collision.gameObject.tag == "Player")
-            pl = collision.gameObject.GetComponent<playerMovement>();
-
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (coll.collider.CompareTag("Player"))
         {
-            pl.external = Vector3.zero;
-            pl = null;
-     
+            coll.collider.transform.SetParent(transform);
         }
     }
+
+    private void OnCollisionExit(Collision coll)
+    {
+        if (coll.collider.CompareTag("Player"))
+        {
+            coll.collider.transform.SetParent(null);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

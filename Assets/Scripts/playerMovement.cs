@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
@@ -28,10 +29,14 @@ public class playerMovement : MonoBehaviour
 
     private Transform cam;
 
+    Rigidbody rb;
+
     bool isGrounded;
     float defaultPos;
     //Interaction Based Variables
 
+    Vector3 dir;
+    Vector3 move;
 
     // Start is called before the first frame update
     void Start()
@@ -39,27 +44,16 @@ public class playerMovement : MonoBehaviour
         //controller = gameObject.GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-      
-
-
-      
-
-
-        //Falling Down
+        
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0.5f)
-        {
-            velocity.y = -2f;
-            gravity = -19.6f;
-        }
+       
 
         //Get input axes
         float x = Input.GetAxis("Horizontal");
@@ -67,48 +61,55 @@ public class playerMovement : MonoBehaviour
 
 
         //Move with local dir
-        Vector3 move = new Vector3(x, 0f, y).normalized;
+       
+        move = new Vector3(x, 0f, y).normalized;
 
 
         float angle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
+
+
+
         transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
-        if (move.magnitude > 0.1f || external.magnitude >0.1f)
+        if (move.magnitude > 0.1f)
         {
 
-            Vector3 dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
-            controller.Move(dir * speed * Time.deltaTime + external * Time.deltaTime);
-        }
-        velocity.y += gravity * Time.deltaTime;
+            dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
 
+            {
+                transform.forward = dir;
+                rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
+
+            }
+        }
+
+       
         //Fall down
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y += 20f;
-        }
-        if(Input.GetButton("Glide"))
-        {
-            if (gravity < -1f)
-                gravity += 5f * Time.deltaTime;
-            else
-                gravity = -1f;
-        } 
-
-        else
-        {
-            gravity = -19.6f;
+            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+            Debug.Log("jump");
         }
 
+        if(Input.GetButton("Glide") && !isGrounded)
+        {
+            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * 15f * Time.deltaTime * Physics.gravity.y), ForceMode.Acceleration);
 
-        
+        }
 
-        controller.Move(velocity * Time.deltaTime);
+    }
 
-
+    void FixedUpdate()
+    {
+        if (move.magnitude > 0.1f)
+        {
+            transform.forward = dir;
+            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+        }
     }
 
 };
