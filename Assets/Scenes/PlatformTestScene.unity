@@ -548,6 +548,10 @@ MonoBehaviour:
       propertyPath: m_Name
       value: MovingPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 1119665602035008142, guid: 1ab75841164b51f4ba6b403f719c0027, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab75841164b51f4ba6b403f719c0027, type: 3}
 --- !u!1001 &7791243182293443555
