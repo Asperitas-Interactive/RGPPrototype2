@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MovePlat : MonoBehaviour
 {
-    public GameObject Player;
-    Vector3 defaultPos;
     //The Distance the end points are
     public Vector3 DisplacementPos;
     public Vector3 DisplacementNeg;
@@ -37,7 +35,7 @@ public class MovePlat : MonoBehaviour
     //Check if it reached its destination
     void DestinationReach()
     {
-        if (transform.position.x == DestinationMax.x && transform.position.y == DestinationMax.y && transform.position.z == DestinationMax.z)
+        if(transform.position.x == DestinationMax.x && transform.position.y == DestinationMax.y && transform.position.z == DestinationMax.z)
         {
             VectorSpeed = -VectorSpeed;
         }
@@ -45,14 +43,6 @@ public class MovePlat : MonoBehaviour
         if (transform.position.x == DestinationMin.x && transform.position.y == DestinationMin.y && transform.position.z == DestinationMin.z)
         {
             VectorSpeed = -VectorSpeed;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject == Player)
-        {
-            Player.transform.parent = transform;
         }
     }
 }
