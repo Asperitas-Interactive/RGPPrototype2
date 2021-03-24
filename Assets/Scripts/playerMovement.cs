@@ -30,10 +30,6 @@ public class playerMovement : MonoBehaviour
     bool isGrounded;
     float defaultPos;
 
-    //Platform Stuff
-    bool isOnPlat = false;
-    MovePlat currentPlat;
-
     //Interaction Based Variables
 
 
@@ -79,14 +75,6 @@ public class playerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
-        if (isOnPlat == true)
-        {
-            velocity = Vector3.zero;
-            velocity.x = currentPlat.VectorSpeed.x;
-            velocity.z = currentPlat.VectorSpeed.z;
-            velocity.y = currentPlat.VectorSpeed.y;
-        }
-
         //Fall down
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -113,22 +101,6 @@ public class playerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
 
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "MovingPlatform")
-        {
-            currentPlat = other.gameObject.GetComponent<MovePlat>();
-            isOnPlat = true;
-        }
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        isOnPlat = false;
     }
 
 };
