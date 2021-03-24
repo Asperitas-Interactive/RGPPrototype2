@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 500
-  glide: 0
+  glide: 1
   controller: {fileID: 1287774983}
   speed: 12
   gravity: -19.6
@@ -1458,7 +1458,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7306
+  m_Name: pb_Mesh37530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
