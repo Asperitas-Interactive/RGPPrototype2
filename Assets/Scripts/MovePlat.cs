@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovePlat : MonoBehaviour
 {
-
+    public GameObject Player;
     Vector3 defaultPos;
     //The Distance the end points are
     public Vector3 DisplacementPos;
@@ -45,6 +45,14 @@ public class MovePlat : MonoBehaviour
         if (transform.position.x == DestinationMin.x && transform.position.y == DestinationMin.y && transform.position.z == DestinationMin.z)
         {
             VectorSpeed = -VectorSpeed;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == Player)
+        {
+            Player.transform.parent = transform;
         }
     }
 }
