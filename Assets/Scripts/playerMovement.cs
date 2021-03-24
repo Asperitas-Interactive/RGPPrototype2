@@ -49,6 +49,8 @@ public class playerMovement : MonoBehaviour
 
         xRotation -= mouseY;
         yRotation += mouseX;
+        Vector3 rot = (Vector3.up * xRotation);
+
 
         transform.localRotation = (Quaternion.Euler(0f, yRotation, 0f));
 
@@ -75,27 +77,26 @@ public class playerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         //Fall down
+
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
-    
-            velocity.y = Mathf.Sqrt(jumpHeight *-2f * gravity);
-            
+            velocity.y += 20f;
+        }
+        if(Input.GetButton("Glide"))
+        {
+            if (gravity < -1f)
+                gravity += 10f * Time.deltaTime;
+            else
+                gravity = -1f;
         } 
 
-        if(Input.GetButton("Jump"))
+        else
         {
-            if (glide)
-            {
-                jumpHeight = 4f;
-                gravity = -3f;
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-            } 
-        } else
-        {
-            jumpHeight = 2f;
             gravity = -19.6f;
         }
+
+
+        
 
         controller.Move(velocity * Time.deltaTime);
 
