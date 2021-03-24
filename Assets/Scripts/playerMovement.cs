@@ -28,7 +28,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     bool isGrounded;
-
+    float defaultPos;
     //Interaction Based Variables
 
 
@@ -75,15 +75,18 @@ public class playerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         //Fall down
-
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-    
-            velocity.y = Mathf.Sqrt(jumpHeight *-2f * gravity);
+
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+           
+                jumpHeight = 2f;
+                gravity = -19.6f;
+            
+
         }
 
-        if(Input.GetButtonDown("Glide"))
+        if (Input.GetButton("Glide") && isGrounded)
         {
             if (glide)
             {
@@ -93,7 +96,7 @@ public class playerMovement : MonoBehaviour
 
             }
         }
-
+       
         controller.Move(velocity * Time.deltaTime);
 
 
