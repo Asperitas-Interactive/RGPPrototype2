@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MovePlat : MonoBehaviour
 {
-
-    Vector3 defaultPos;
     //The Distance the end points are
     public Vector3 DisplacementPos;
     public Vector3 DisplacementNeg;
@@ -46,15 +44,5 @@ public class MovePlat : MonoBehaviour
         {
             VectorSpeed = -VectorSpeed;
         }
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        defaultPos =  transform.position;
-    }
-
-    public void OnCollisionStay(Collision collision)
-    {
-        collision.gameObject.transform.position += defaultPos - transform.position;
     }
 }
