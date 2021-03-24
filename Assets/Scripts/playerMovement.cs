@@ -79,21 +79,19 @@ public class playerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            if(glide)
-            {
-                jumpHeight = 4f;
-                gravity = -3f;
-            }
+    
             velocity.y = Mathf.Sqrt(jumpHeight *-2f * gravity);
         }
 
         if(Input.GetButtonDown("Glide"))
         {
-            glide = !glide;
             if (glide)
+            {
+                jumpHeight = 4f;
                 gravity = -3f;
-            else
-                gravity = -19.6f;
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+            }
         }
 
         controller.Move(velocity * Time.deltaTime);
