@@ -54,12 +54,24 @@ public class playerMovement : MonoBehaviour
         
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-       
-
-        //Get input axes
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+<<<<<<< Updated upstream
+        //Get input axes
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+=======
+>>>>>>> Stashed changes
+
+        if (!isGrounded)
+        {
+            x = Input.GetAxis("Horizontal");
+            y = Input.GetAxis("Vertical");
+        }
+
+        //Get input axes
+        
 
         //Move with local dir
        
@@ -75,7 +87,7 @@ public class playerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
-        if (move.magnitude > 0.1f)
+        if (move.magnitude > 0.01f)
         {
 
             dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
@@ -93,12 +105,11 @@ public class playerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
-            Debug.Log("jump");
         }
 
         if(Input.GetButton("Glide") && !isGrounded)
         {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * 15f * Time.deltaTime * Physics.gravity.y), ForceMode.Acceleration);
+            rb.velocity += new Vector3(0f, 2f * Time.deltaTime, 0f);
 
         }
 
@@ -106,7 +117,7 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (move.magnitude > 0.1f)
+        if (move.magnitude > 0.01f)
         {
             transform.forward = dir;
             rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
