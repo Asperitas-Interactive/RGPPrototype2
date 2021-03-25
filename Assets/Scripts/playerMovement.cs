@@ -57,8 +57,8 @@ public class playerMovement : MonoBehaviour
        
 
         //Get input axes
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
 
 
         //Move with local dir
