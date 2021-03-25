@@ -50,7 +50,7 @@ public class WanderAI : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            agent.gameObject.SetActive(false);
+            agent.enabled = false;
         }
     }
 
@@ -58,7 +58,7 @@ public class WanderAI : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            agent.gameObject.SetActive(true);
+            agent.enabled = true;
         }
     }
 }
