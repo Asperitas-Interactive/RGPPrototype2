@@ -57,18 +57,13 @@ public class playerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-<<<<<<< Updated upstream
-        //Get input axes
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-=======
->>>>>>> Stashed changes
 
-        if (!isGrounded)
-        {
-            x = Input.GetAxis("Horizontal");
-            y = Input.GetAxis("Vertical");
-        }
+
+        //if (!isGrounded)
+        //{
+        //    x = Input.GetAxis("Horizontal");
+        //    y = Input.GetAxis("Vertical");
+        //}
 
         //Get input axes
         
@@ -85,10 +80,11 @@ public class playerMovement : MonoBehaviour
 
 
 
-        transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
-        if (move.magnitude > 0.01f)
+        if (move.magnitude > 0.1f)
         {
+            transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
+
 
             dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
 
@@ -117,8 +113,9 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (move.magnitude > 0.01f)
+        if (move.magnitude > 0.1f)
         {
+
             transform.forward = dir;
             rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
         }
