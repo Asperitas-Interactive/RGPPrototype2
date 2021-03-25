@@ -42,7 +42,7 @@ Material:
     m_Floats:
     - _Depthpower: 1
     - _FoamSpeed: 0.05
-    - _Foamdistance: 5
+    - _Foamdistance: 9.03
     - _Fresnel: 1
     - _NormalPower: 1
     m_Colors:
