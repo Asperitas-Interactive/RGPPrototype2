@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class MovePlat : MonoBehaviour
 {
+    playerMovement pl;
     //The Distance the end points are
     public Vector3 DisplacementPos;
     public Vector3 DisplacementNeg;
@@ -17,11 +19,24 @@ public class MovePlat : MonoBehaviour
     {
         DestinationMax = transform.position + DisplacementPos;
         DestinationMin = transform.position + DisplacementNeg;
-        
-
-
-        Debug.Log(DestinationMax);
     }
+
+    private void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("Player"))
+        {
+            coll.collider.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit(Collision coll)
+    {
+        if (coll.collider.CompareTag("Player"))
+        {
+            coll.collider.transform.SetParent(null);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -34,6 +49,11 @@ public class MovePlat : MonoBehaviour
             Mathf.Clamp(transform.position.z, DestinationMin.z, DestinationMax.z));
         //check if reached
         DestinationReach();
+
+        if(pl)
+        {
+            pl.external = VectorSpeed;
+        }
     }
 
     //Check if it reached its destination
@@ -49,4 +69,6 @@ public class MovePlat : MonoBehaviour
             VectorSpeed = -VectorSpeed;
         }
     }
+
+   
 }
