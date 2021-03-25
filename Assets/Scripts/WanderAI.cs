@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class WanderAI : MonoBehaviour
 {
+    [SerializeField]
     private NavMeshAgent agent;
     [SerializeField]
     public float radius;
@@ -16,7 +17,6 @@ public class WanderAI : MonoBehaviour
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         origin = transform.position;
     }
 
@@ -44,5 +44,21 @@ public class WanderAI : MonoBehaviour
         NavMesh.SamplePosition(RandPos, out hit, radius, NavMesh.AllAreas);
 
         return hit.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            agent.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            agent.gameObject.SetActive(true);
+        }
     }
 }
