@@ -134,21 +134,20 @@ public class playerMovement : MonoBehaviour
                     distToGround = hit.distance;
                }
 
-                
+                rb.velocity = new Vector3(rb.velocity.x, -distToGround/3.2f, rb.velocity.z);
+
                 isGliding = true;
             }
 
             Physics.Raycast(transform.position, -Vector3.up, out hit);
-
-            if (hit.distance < 5.0f && hit.distance > 5.1f)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, -distToGround / 3.2f, rb.velocity.z);
                 distToGround = hit.distance;
+            
 
-            }
             if (rb.velocity.y < -1.0f)
-                rb.AddForce(Vector3.up * -distToGround/3.2f * Time.deltaTime, ForceMode.VelocityChange);
-          
+                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+            else
+                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+
             Debug.Log("Glide biitch");
 
         }
