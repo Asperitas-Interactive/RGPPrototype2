@@ -40,10 +40,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Depthpower: 10.24
+    - _Depthpower: 7.19
     - _FoamSpeed: 0.18
-    - _Foamdistance: 2.01
-    - _Fresnel: 0.5
+    - _Foamdistance: 0.57
+    - _Fresnel: 0.98
     - _NormalPower: 1.33
     m_Colors:
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
