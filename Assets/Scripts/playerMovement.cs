@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngineInternal;
 
 public class playerMovement : MonoBehaviour
 {
@@ -29,11 +30,16 @@ public class playerMovement : MonoBehaviour
 
     private Transform cam;
 
+    [Range(0f, -3.0f)]
+    public float glideFactor = -1.8f;
+
     Rigidbody rb;
 
+    bool isJumping;
     bool isGrounded;
     float defaultPos;
-
+    bool canGlide;
+    bool isGliding;
     //Interaction Based Variables
 
     Vector3 dir;
@@ -54,12 +60,19 @@ public class playerMovement : MonoBehaviour
         
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-       
-
-        //Get input axes
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+
+
+        //if (!isGrounded)
+        //{
+        //    x = Input.GetAxis("Horizontal");
+        //    y = Input.GetAxis("Vertical");
+        //}
+
+        //Get input axes
+        
 
         //Move with local dir
        
@@ -71,12 +84,18 @@ public class playerMovement : MonoBehaviour
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
 
+        if (isGrounded)
+        {
+            isJumping = false;
+            canGlide = false;
+            isGliding = false;
+        }
 
-
-        transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
         if (move.magnitude > 0.1f)
         {
+            transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
+
 
             dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
 
@@ -93,12 +112,43 @@ public class playerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
-            Debug.Log("jump");
+            isJumping = true;
+            defaultPos = transform.position.y;
         }
 
-        if(Input.GetButton("Glide") && !isGrounded)
+        if (Input.GetButtonUp("Jump"))
         {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * 15f * Time.deltaTime * Physics.gravity.y), ForceMode.Acceleration);
+            canGlide = true;
+        }
+
+        if (Input.GetButton("Jump") && canGlide)
+        {
+            RaycastHit hit = new RaycastHit();
+
+            float distToGround = 5f;
+            if(!isGliding)
+            {
+               if(Physics.Raycast(transform.position, -Vector3.up, out hit))
+               {
+                    Debug.Log(hit.distance);
+                    distToGround = hit.distance;
+               }
+
+                rb.velocity = new Vector3(rb.velocity.x, -distToGround/3.2f, rb.velocity.z);
+
+                isGliding = true;
+            }
+
+            Physics.Raycast(transform.position, -Vector3.up, out hit);
+                distToGround = hit.distance;
+            
+
+            if (rb.velocity.y < -1.0f)
+                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+            else
+                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+
+            Debug.Log("Glide biitch");
 
         }
 
@@ -108,6 +158,7 @@ public class playerMovement : MonoBehaviour
     {
         if (move.magnitude > 0.1f)
         {
+
             transform.forward = dir;
             rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
         }
