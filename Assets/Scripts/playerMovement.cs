@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngineInternal;
 
 public class playerMovement : MonoBehaviour
 {
@@ -29,11 +30,16 @@ public class playerMovement : MonoBehaviour
 
     private Transform cam;
 
+    [Range(0f, -3.0f)]
+    public float glideFactor = -1.8f;
+
     Rigidbody rb;
 
+    bool isJumping;
     bool isGrounded;
     float defaultPos;
-
+    bool canGlide;
+    bool isGliding;
     //Interaction Based Variables
 
     Vector3 dir;
@@ -78,7 +84,12 @@ public class playerMovement : MonoBehaviour
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
 
-
+        if (isGrounded)
+        {
+            isJumping = false;
+            canGlide = false;
+            isGliding = false;
+        }
 
 
         if (move.magnitude > 0.1f)
@@ -101,11 +112,43 @@ public class playerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+            isJumping = true;
+            defaultPos = transform.position.y;
         }
 
-        if(Input.GetButton("Glide") && !isGrounded)
+        if (Input.GetButtonUp("Jump"))
         {
-            rb.velocity += new Vector3(0f, 2f * Time.deltaTime, 0f);
+            canGlide = true;
+        }
+
+        if (Input.GetButton("Jump") && canGlide)
+        {
+            RaycastHit hit = new RaycastHit();
+
+            float distToGround = 5f;
+            if(!isGliding)
+            {
+               if(Physics.Raycast(transform.position, -Vector3.up, out hit))
+               {
+                    Debug.Log(hit.distance);
+                    distToGround = hit.distance;
+               }
+
+                rb.velocity = new Vector3(rb.velocity.x, -distToGround/3.2f, rb.velocity.z);
+
+                isGliding = true;
+            }
+
+            Physics.Raycast(transform.position, -Vector3.up, out hit);
+                distToGround = hit.distance;
+            
+
+            if (rb.velocity.y < -1.0f)
+                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+            else
+                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+
+            Debug.Log("Glide biitch");
 
         }
 
