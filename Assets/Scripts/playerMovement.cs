@@ -83,6 +83,7 @@ public class playerMovement : MonoBehaviour
 
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
+        Debug.Log(angle);
 
         if (isGrounded)
         {
@@ -94,10 +95,10 @@ public class playerMovement : MonoBehaviour
 
         if (move.magnitude > 0.1f)
         {
-            transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
+            //transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
 
-            dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
+            dir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             if(transform.parent == null)
             {
                 transform.forward = dir;
