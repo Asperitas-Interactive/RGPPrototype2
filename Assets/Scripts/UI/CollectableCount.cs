@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CollectableCount : MonoBehaviour
 {
+    public bool counted = false;
     [SerializeField]
     private Sprite Unchecked;
     [SerializeField]
@@ -26,5 +27,6 @@ public class CollectableCount : MonoBehaviour
     public void onCollection()
     {
         UIImage.sprite = Checked;
+        counted = true;
     }
 }
