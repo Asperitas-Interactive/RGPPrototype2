@@ -147,7 +147,7 @@ public class playerMovement : MonoBehaviour
             Physics.Raycast(transform.position, -Vector3.up, out hit);
             currDist = hit.distance;
             
-            if(currDist < 10f && glideTimer > 0.0f)
+            if(glideTimer > 0.0f)
             {
 
             }
@@ -157,7 +157,7 @@ public class playerMovement : MonoBehaviour
             }
 
             if (rb.velocity.y < -1.0f)
-                rb.AddForce(Vector3.up * distToGround * 4 * Time.deltaTime, ForceMode.VelocityChange);
+                rb.AddForce(Vector3.up * distToGround * 10f * Time.deltaTime, ForceMode.VelocityChange);
             else
                 rb.AddForce(Vector3.up * 1f * Time.deltaTime, ForceMode.VelocityChange);
 
