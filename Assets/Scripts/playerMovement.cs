@@ -83,8 +83,6 @@ public class playerMovement : MonoBehaviour
 
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
-        Debug.Log(angle);
-
         if (isGrounded)
         {
             isJumping = false;

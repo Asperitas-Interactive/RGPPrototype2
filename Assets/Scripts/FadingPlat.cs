@@ -29,16 +29,16 @@ public class FadingPlat : MonoBehaviour
                 if (faded == false)
                 {
                     Fade();
-                } else
-                {
-                    unfadeStart = true;
-
                 }
             }
-        } if(unfadeStart == true)
+        } 
+        
+        if(unfadeStart == true)
         {
             UnFade();
         }
+
+        Debug.Log(fadeTimer);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -55,8 +55,9 @@ public class FadingPlat : MonoBehaviour
 
         if(transform.localScale.x == 0.001f && transform.localScale.z == 0.001f)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
             faded = true;
+            fadestart = false;
+            unfadeStart = true;
             fadeTimer = maxFallTimer;
         }
     }
@@ -67,9 +68,12 @@ public class FadingPlat : MonoBehaviour
             transform.localScale.y,
             Mathf.Clamp(transform.localScale.z + 1 * Time.deltaTime, 0.001f, baseScale.z));
 
-        if (transform.localScale.x == 0.1f && transform.localScale.z == 0.1f)
+        if(transform.localScale.x == baseScale.x && transform.localScale.z == baseScale.z)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = true;
+            fadeTimer = maxFallTimer;
+            unfadeStart = false;
+            fadestart = false;
+            faded = false;
         }
     }
 }
