@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4737355305510908899}
   m_Layer: 0
-  m_Name: Prefab_Rock
+  m_Name: Prefab_MossyRockboundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4102231554745699555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6237931099237744863}
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 385cfc2aa02ff3641876280a4ba4d631, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 72ebfae69f5a57f49bd3b0101afe974b, type: 2}
+      objectReference: {fileID: 2100000, guid: 70cf9f237a740504586787fd17445392, type: 2}
     - target: {fileID: 919132149155446097, guid: 385cfc2aa02ff3641876280a4ba4d631, type: 3}
       propertyPath: m_Name
       value: MOD_Rock1
