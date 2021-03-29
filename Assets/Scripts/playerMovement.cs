@@ -159,8 +159,6 @@ public class playerMovement : MonoBehaviour
             else
                 rb.AddForce(Vector3.up * 1f * Time.deltaTime, ForceMode.VelocityChange);
 
-            Debug.Log("Glide biitch");
-
         }
 
     }

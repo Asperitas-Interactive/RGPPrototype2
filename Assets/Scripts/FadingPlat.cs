@@ -37,8 +37,6 @@ public class FadingPlat : MonoBehaviour
         {
             UnFade();
         }
-
-        Debug.Log(fadeTimer);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -36,7 +36,6 @@ public class PuzzleSpawner : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("woo!");
             PuzzleBegin();
         }
     }
