@@ -64,9 +64,9 @@ public class FadingPlat : MonoBehaviour
 
     private void UnFade()
     {
-        transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x + 1 * Time.deltaTime, 0.001f, baseScale.x),
+        transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x + 10 * Time.deltaTime, 0.001f, baseScale.x),
             transform.localScale.y,
-            Mathf.Clamp(transform.localScale.z + 1 * Time.deltaTime, 0.001f, baseScale.z));
+            Mathf.Clamp(transform.localScale.z + 10 * Time.deltaTime, 0.001f, baseScale.z));
 
         if(transform.localScale.x == baseScale.x && transform.localScale.z == baseScale.z)
         {
