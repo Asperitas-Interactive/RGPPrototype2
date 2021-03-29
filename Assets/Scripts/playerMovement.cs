@@ -8,7 +8,7 @@ using UnityEngineInternal;
 public class playerMovement : MonoBehaviour
 {
 
-
+    float glideTimer = 0.0f;
     float smoothTime = 0.1f;
     float smoothVel;
 
@@ -83,6 +83,7 @@ public class playerMovement : MonoBehaviour
 
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
+        Debug.Log(angle);
 
         if (isGrounded)
         {
@@ -94,11 +95,11 @@ public class playerMovement : MonoBehaviour
 
         if (move.magnitude > 0.1f)
         {
-            transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
+            //transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
 
-            dir = Quaternion.Euler(0f, smAngle, 0f) * Vector3.forward;
-
+            dir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+            if(transform.parent == null)
             {
                 transform.forward = dir;
                 rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
@@ -119,34 +120,46 @@ public class playerMovement : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             canGlide = true;
+            glideTimer = 5.0f;
         }
 
         if (Input.GetButton("Jump") && canGlide)
         {
             RaycastHit hit = new RaycastHit();
 
+            glideTimer -= Time.deltaTime;
+
             float distToGround = 5f;
             if(!isGliding)
             {
                if(Physics.Raycast(transform.position, -Vector3.up, out hit))
                {
-                    Debug.Log(hit.distance);
+                    //Debug.Log(hit.distance);
                     distToGround = hit.distance;
                }
 
-                rb.velocity = new Vector3(rb.velocity.x, -distToGround/3.2f, rb.velocity.z);
+                rb.velocity = new Vector3(rb.velocity.x, -0.5f, rb.velocity.z);
 
                 isGliding = true;
             }
+            float currDist;
 
             Physics.Raycast(transform.position, -Vector3.up, out hit);
-                distToGround = hit.distance;
+            currDist = hit.distance;
             
+            if(currDist < 10f && glideTimer > 0.0f)
+            {
+
+            }
+            else
+            {
+                rb.AddForce(Vector3.up * distToGround * -3 * Time.deltaTime, ForceMode.VelocityChange);
+            }
 
             if (rb.velocity.y < -1.0f)
-                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+                rb.AddForce(Vector3.up * distToGround * 4 * Time.deltaTime, ForceMode.VelocityChange);
             else
-                rb.AddForce(Vector3.up * distToGround * 2 * Time.deltaTime, ForceMode.VelocityChange);
+                rb.AddForce(Vector3.up * 1f * Time.deltaTime, ForceMode.VelocityChange);
 
             Debug.Log("Glide biitch");
 
@@ -156,7 +169,7 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (move.magnitude > 0.1f)
+        if (move.magnitude > 0.1f  &&transform.parent!=null)
         {
 
             transform.forward = dir;
