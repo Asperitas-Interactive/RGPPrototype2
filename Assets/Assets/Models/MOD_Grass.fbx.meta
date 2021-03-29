@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 08ea53e1421223d48be835c923de9153, type: 2}
+    second: {fileID: 2100000, guid: 20f6630242080e245a9e24e684b9d080, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,7 +39,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
