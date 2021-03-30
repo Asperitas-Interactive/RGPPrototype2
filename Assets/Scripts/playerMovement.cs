@@ -165,11 +165,20 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (move.magnitude > 0.1f  &&transform.parent!=null)
+        if (transform.parent != null)
         {
+            if (move.magnitude > 0.1f)
+            {
 
-            transform.forward = dir;
-            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+                transform.forward = dir;
+                rb.velocity = dir * speed;
+
+            }
+
+            else
+            {
+                rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            }
         }
     }
 

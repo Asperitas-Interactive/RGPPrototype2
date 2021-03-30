@@ -50,10 +50,7 @@ public class MovePlat : MonoBehaviour
         //check if reached
         DestinationReach();
 
-        if(pl)
-        {
-            pl.external = VectorSpeed;
-        }
+       
     }
 
     //Check if it reached its destination
