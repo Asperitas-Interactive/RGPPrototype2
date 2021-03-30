@@ -100,12 +100,15 @@ public class playerMovement : MonoBehaviour
             if(transform.parent == null)
             {
                 transform.forward = dir;
-                rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
-
+                rb.velocity = new Vector3((dir * speed).x, rb.velocity.y, (dir*speed).z);
             }
         }
+        else
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+        }
 
-       
+
         //Fall down
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -169,9 +172,7 @@ public class playerMovement : MonoBehaviour
         {
             if (move.magnitude > 0.1f)
             {
-
-                transform.forward = dir;
-                rb.velocity = dir * speed;
+                rb.velocity = new Vector3((dir * speed).x, rb.velocity.y, (dir * speed).z);
 
             }
 
