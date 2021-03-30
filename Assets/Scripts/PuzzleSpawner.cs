@@ -9,6 +9,7 @@ public class PuzzleSpawner : MonoBehaviour
     public string puzzletag;
     public float Timer = 20.0f;
     private bool isTiming = false;
+    private bool bActive = false;
     void Start()
     {
         puzzleElements = GameObject.FindGameObjectsWithTag(puzzletag);
@@ -34,7 +35,7 @@ public class PuzzleSpawner : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && bActive == false)
         {
             PuzzleBegin();
         }
@@ -46,6 +47,7 @@ public class PuzzleSpawner : MonoBehaviour
         {
             element.SetActive(true);
             isTiming = true;
+            bActive = true;
         }
     }
 
@@ -56,6 +58,7 @@ public class PuzzleSpawner : MonoBehaviour
             element.SetActive(false);
             isTiming = false;
             Timer = 20.0f;
+            bActive = false;
         }
     }
 }
