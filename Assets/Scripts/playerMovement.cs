@@ -173,12 +173,12 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //4 is water
         if (other.gameObject.layer == 4)
         {
-            rb.AddForce(0.0f, -1.0f * Physics.gravity.y, 0.0f);
+            rb.AddForce(0.0f, -1.0f * Physics.gravity.y, 0.0f, ForceMode.VelocityChange);
         }
 
     }
