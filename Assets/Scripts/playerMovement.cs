@@ -83,8 +83,6 @@ public class playerMovement : MonoBehaviour
 
         float smAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref smoothVel, smoothTime);
 
-        Debug.Log(angle);
-
         if (isGrounded)
         {
             isJumping = false;
@@ -161,8 +159,6 @@ public class playerMovement : MonoBehaviour
             else
                 rb.AddForce(Vector3.up * 1f * Time.deltaTime, ForceMode.VelocityChange);
 
-            Debug.Log("Glide biitch");
-
         }
 
     }
@@ -177,4 +173,13 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //4 is water
+        if (other.gameObject.layer == 4)
+        {
+            rb.AddForce(0.0f, -1.0f * Physics.gravity.y, 0.0f, ForceMode.VelocityChange);
+        }
+
+    }
 };
