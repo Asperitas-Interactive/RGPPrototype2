@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Ring : MonoBehaviour
 {
-    private bool ringCheck = false;
+    public bool ringCheck = false;
+    [SerializeField]
+    private Material blueRing;
+    [SerializeField]
+    private Material redRing;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -21,6 +25,7 @@ public class Ring : MonoBehaviour
         if(other.tag == "Player")
         {
             ringCheck = true;
+            gameObject.GetComponent<MeshRenderer>().material = redRing;
         }
     }
 }
