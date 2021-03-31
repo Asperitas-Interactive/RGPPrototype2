@@ -13,10 +13,12 @@ public class scatter : MonoBehaviour
     animal[] animals;
 
     // Start is called before the first frame update
-    private void Awake()
+    private void OnAwake()
     {
         Animals = transform.GetChild(0).gameObject;
         Waypoints = transform.GetChild(1).gameObject;
+        animals = new animal[Animals.transform.childCount];
+        scatterAway();
     }
 
     public struct animal
@@ -27,9 +29,7 @@ public class scatter : MonoBehaviour
 
     void Start()
     {
-        animals = new animal[Animals.transform.childCount];
-
-        scatterAway();
+        
     }
     
 
@@ -51,7 +51,7 @@ public class scatter : MonoBehaviour
     {
         int num;
 
-        for (int i =0;i<Animals.transform.childCount ;i++)
+        for (int i = 0; i < Animals.transform.childCount; i++)
         {
             animals[i].an = Animals.transform.GetChild(i).gameObject;
             num = rnd.Next(0, Waypoints.transform.childCount);
