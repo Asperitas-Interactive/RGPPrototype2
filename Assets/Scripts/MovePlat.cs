@@ -10,13 +10,14 @@ public class MovePlat : MonoBehaviour
     public Vector3 DisplacementPos;
     public Vector3 DisplacementNeg;
     //The Speed you arrive at a end point
-    public Vector3 VectorSpeed;
+    private Vector3 VectorSpeed;
     //The Destination it checks
     private Vector3 DestinationMax;
     private Vector3 DestinationMin;
     // Start is called before the first frame update
     void Start()
     {
+        VectorSpeed.y = Random.Range(0.1f, 0.5f);
         DestinationMax = transform.position + DisplacementPos;
         DestinationMin = transform.position + DisplacementNeg;
     }
