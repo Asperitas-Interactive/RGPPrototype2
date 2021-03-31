@@ -55,6 +55,10 @@ public class PuzzleSpawner : MonoBehaviour
     {
         foreach (GameObject element in puzzleElements)
         {
+            if(element.GetComponent<GoalRing>() != null)
+            {
+                element.GetComponent<GoalRing>().Reset();
+            }
             element.SetActive(false);
             isTiming = false;
             Timer = 20.0f;
