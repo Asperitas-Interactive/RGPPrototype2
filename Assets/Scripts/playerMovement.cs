@@ -198,7 +198,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         //4 is water
         if (other.gameObject.layer == 4)
