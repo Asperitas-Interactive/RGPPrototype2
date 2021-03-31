@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Ring : MonoBehaviour
 {
+    private bool ringCheck = false;
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        ringCheck = false;
     }
 
     // Update is called once per frame
@@ -17,6 +18,9 @@ public class Ring : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
+        if(other.tag == "Player")
+        {
+            ringCheck = true;
+        }
     }
 }
