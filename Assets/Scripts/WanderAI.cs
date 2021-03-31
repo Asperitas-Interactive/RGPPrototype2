@@ -5,30 +5,46 @@ using UnityEngine.AI;
 
 public class WanderAI : MonoBehaviour
 {
-    [SerializeField]
-    private NavMeshAgent agent;
-    [SerializeField]
+    
+    
     public float radius;
     private Vector3 origin;
-    [SerializeField]
     public float maxTimer;
+
+    Vector3 vel = Vector3.zero;
+    Vector3 MovePos = Vector3.zero;
 
     private float timer;
 
     private void Start()
     {
-        origin = transform.position;
+    }
+    private void OnEnable()
+    {
+        origin = transform.localPosition;
+
+    }
+    private void OnDisable()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-
-        if(timer <= 0.0f)
+        transform.Translate(vel * Time.deltaTime);
+        Vector3 velNor = vel.normalized;
+        if ((MovePos - transform.localPosition).x < 0.1f && (MovePos - transform.localPosition).z < 0.1f)
         {
-            Vector3 MovePos = RandomPositionInCircle(origin, 4);
-            agent.SetDestination(MovePos);
+            timer = 0.0f;
+        }
+        if (timer <= 0.0f)
+        {
+            MovePos = RandomPositionInCircle(origin, 4);
+            vel = (MovePos - transform.localPosition).normalized * 2.0f;
+            //transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(vel.x, vel.z) * Mathf.Rad2Deg, 0f);
+
             timer = maxTimer;
         }
     }
@@ -36,21 +52,17 @@ public class WanderAI : MonoBehaviour
     Vector3 RandomPositionInCircle(Vector3 origin, float radius) 
     {
         Vector3 RandPos = Random.insideUnitSphere * radius;
-
+        RandPos.y = origin.y;
         RandPos += origin;
 
-        NavMeshHit hit;
-
-        NavMesh.SamplePosition(RandPos, out hit, radius, NavMesh.AllAreas);
-
-        return hit.position;
+        return RandPos;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            agent.enabled = false;
+           
         }
     }
 
@@ -58,7 +70,7 @@ public class WanderAI : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            agent.enabled = true;
+            //agent.enabled = true;
         }
     }
 }
