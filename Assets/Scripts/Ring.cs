@@ -28,10 +28,4 @@ public class Ring : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().material = redRing;
         }
     }
-
-    public void Reset()
-    {
-        ringCheck = false;
-        gameObject.GetComponent<MeshRenderer>().material = blueRing;
-    }
 }
