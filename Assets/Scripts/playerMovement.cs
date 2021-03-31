@@ -163,17 +163,19 @@ public class playerMovement : MonoBehaviour
 
     }
 
-    /*void FixedUpdate()
+    void FixedUpdate()
     {
         if (move.magnitude > 0.1f  &&transform.parent!=null)
         {
 
             transform.forward = dir;
             rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+
+            transform.localRotation = transform.parent.rotation;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         //4 is water
         if (other.gameObject.layer == 4)
