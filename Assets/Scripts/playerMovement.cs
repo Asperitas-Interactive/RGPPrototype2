@@ -170,8 +170,6 @@ public class playerMovement : MonoBehaviour
 
             transform.forward = dir;
             rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
-
-            transform.localRotation = transform.parent.rotation;
         }
     }
 
