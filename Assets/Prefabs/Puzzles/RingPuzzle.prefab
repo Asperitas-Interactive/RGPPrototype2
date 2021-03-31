@@ -1,217 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!135 &4319919920140632278
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669543970612}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
---- !u!114 &4319919920140632279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669543970612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringCheck: 0
-  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
-  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
---- !u!135 &4319919920219390310
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669465441947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
---- !u!114 &4319919920219390305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669465441947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274e22a97ff575140b117c0f6bb4ab4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectable: {fileID: 0}
-  Rings:
-  - {fileID: 4319919921234500449}
-  - {fileID: 4319919920773629816}
-  - {fileID: 4319919920708584256}
-  - {fileID: 4319919921730196500}
-  - {fileID: 4319919920366013029}
-  - {fileID: 4319919921029494728}
-  - {fileID: 4319919920140632279}
---- !u!135 &4319919920366013028
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669050027366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
---- !u!114 &4319919920366013029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669050027366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringCheck: 0
-  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
-  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
---- !u!135 &4319919920708584259
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274670053201081}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
---- !u!114 &4319919920708584256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274670053201081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringCheck: 0
-  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
-  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
---- !u!135 &4319919920773629819
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669984026753}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
---- !u!114 &4319919920773629816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669984026753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringCheck: 0
-  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
-  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
---- !u!1 &4319919921002424069
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4319919921002424068}
-  m_Layer: 0
-  m_Name: RingPuzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4319919921002424068
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319919921002424069}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 105.16821, y: 140.06, z: 271.62137}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1466205273518380630}
-  - {fileID: 1466205274497961046}
-  - {fileID: 1466205274037096524}
-  - {fileID: 1466205273972118644}
-  - {fileID: 1466205275027211064}
-  - {fileID: 1466205273631579563}
-  - {fileID: 1466205274292953340}
-  - {fileID: 1466205273437526009}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4319919921029494731
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669728178225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
---- !u!114 &4319919921029494728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845274669728178225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ringCheck: 0
-  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
-  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
 --- !u!135 &4319919921234500454
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -268,6 +56,218 @@ MonoBehaviour:
   ringCheck: 0
   blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
   redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
+--- !u!135 &4319919920366013028
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669050027366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
+--- !u!114 &4319919920366013029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669050027366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringCheck: 0
+  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
+  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
+--- !u!135 &4319919920219390310
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669465441947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
+--- !u!114 &4319919920219390305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669465441947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274e22a97ff575140b117c0f6bb4ab4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectable: {fileID: 0}
+  Rings:
+  - {fileID: 4319919921234500449}
+  - {fileID: 4319919920773629816}
+  - {fileID: 4319919920708584256}
+  - {fileID: 4319919921730196500}
+  - {fileID: 4319919920366013029}
+  - {fileID: 4319919921029494728}
+  - {fileID: 4319919920140632279}
+--- !u!135 &4319919920140632278
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669543970612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
+--- !u!114 &4319919920140632279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669543970612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringCheck: 0
+  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
+  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
+--- !u!135 &4319919921029494731
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669728178225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
+--- !u!114 &4319919921029494728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669728178225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringCheck: 0
+  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
+  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
+--- !u!135 &4319919920773629819
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669984026753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
+--- !u!114 &4319919920773629816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274669984026753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringCheck: 0
+  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
+  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
+--- !u!135 &4319919920708584259
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274670053201081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Center: {x: 0.00000014901161, y: -0.000000022351742, z: -0.00000014901161}
+--- !u!114 &4319919920708584256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274670053201081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bf3197b9a92dd46b4e2a445396e0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringCheck: 0
+  blueRing: {fileID: 2100000, guid: ccc4fe92d995a8e41b92d39275f1d525, type: 2}
+  redRing: {fileID: 2100000, guid: 26aaea57cf349d740b78f30fa1431150, type: 2}
+--- !u!1 &4319919921002424069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4319919921002424068}
+  m_Layer: 0
+  m_Name: RingPuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4319919921002424068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319919921002424069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105.16821, y: 140.06, z: 271.62137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1466205273518380630}
+  - {fileID: 1466205274497961046}
+  - {fileID: 1466205274037096524}
+  - {fileID: 1466205273972118644}
+  - {fileID: 1466205275027211064}
+  - {fileID: 1466205273631579563}
+  - {fileID: 1466205274292953340}
+  - {fileID: 1466205273437526009}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4319919920140632266
 PrefabInstance:
   m_ObjectHideFlags: 0
