@@ -57,7 +57,7 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -72,10 +72,10 @@ public class playerMovement : MonoBehaviour
         //}
 
         //Get input axes
-        
+
 
         //Move with local dir
-       
+
         move = new Vector3(x, 0f, y).normalized;
 
 
@@ -90,22 +90,24 @@ public class playerMovement : MonoBehaviour
             isGliding = false;
         }
 
+        transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
 
         if (move.magnitude > 0.1f)
         {
-            //transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
 
 
             dir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-            if(transform.parent == null)
+            if (transform.parent == null)
             {
-                transform.forward = dir;
-                rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
-
+                rb.velocity = new Vector3((dir * speed).x, rb.velocity.y, (dir * speed).z);
             }
         }
+        else
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+        }
 
-       
+
         //Fall down
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -128,13 +130,13 @@ public class playerMovement : MonoBehaviour
             glideTimer -= Time.deltaTime;
 
             float distToGround = 5f;
-            if(!isGliding)
+            if (!isGliding)
             {
-               if(Physics.Raycast(transform.position, -Vector3.up, out hit))
-               {
+                if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+                {
                     //Debug.Log(hit.distance);
                     distToGround = hit.distance;
-               }
+                }
 
                 rb.velocity = new Vector3(rb.velocity.x, -0.5f, rb.velocity.z);
 
@@ -144,8 +146,8 @@ public class playerMovement : MonoBehaviour
 
             Physics.Raycast(transform.position, -Vector3.up, out hit);
             currDist = hit.distance;
-            
-            if(glideTimer > 0.0f)
+
+            if (glideTimer > 0.0f)
             {
 
             }
@@ -163,13 +165,20 @@ public class playerMovement : MonoBehaviour
 
     }
 
-    /*void FixedUpdate()
+    void FixedUpdate()
     {
-        if (move.magnitude > 0.1f  &&transform.parent!=null)
+        if (transform.parent != null)
         {
+            if (move.magnitude > 0.1f)
+            {
+                rb.velocity = new Vector3((dir * speed).x, rb.velocity.y, (dir * speed).z);
 
-            transform.forward = dir;
-            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+            }
+
+            else
+            {
+                rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            }
         }
     }
 
@@ -181,5 +190,5 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(0.0f, -1.0f * Physics.gravity.y, 0.0f, ForceMode.VelocityChange);
         }
 
-    }*/
+    }
 };
