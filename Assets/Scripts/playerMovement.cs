@@ -88,11 +88,14 @@ public class playerMovement : MonoBehaviour
             isGliding = false;
             // yield return new WaitForSeconds(0.5f);
             if (jumpTimer < 0.0f)
+            {
                 isJumping = false;
+                transform.GetChild(4).GetComponent<Animator>().SetBool("isJumping", false);
 
+            }
         }
 
-
+        transform.GetChild(4).GetComponent<Animator>().SetFloat("speed", rb.velocity.magnitude);
 
         transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
 
@@ -119,6 +122,7 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+           transform.GetChild(4).GetComponent<Animator>().SetBool("isJumping", true);
 
             isJumping = true;
             rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
@@ -196,7 +200,7 @@ public class playerMovement : MonoBehaviour
                 rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
             }
         }
-    }
+    } 
 
     /*private void OnTriggerEnter(Collider other)
     {
@@ -206,5 +210,5 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(0.0f, -1.0f * Physics.gravity.y, 0.0f, ForceMode.VelocityChange);
         }
 
-    }
+    }*/
 };
