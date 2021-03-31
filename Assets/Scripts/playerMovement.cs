@@ -163,7 +163,7 @@ public class playerMovement : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         if (move.magnitude > 0.1f  &&transform.parent!=null)
         {
@@ -181,5 +181,5 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(0.0f, -1.0f * Physics.gravity.y, 0.0f, ForceMode.VelocityChange);
         }
 
-    }
+    }*/
 };
