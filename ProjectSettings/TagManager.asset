@@ -6,6 +6,7 @@ TagManager:
   tags:
   - plat
   - Puzzle1
+  - Puzzle2
   layers:
   - Default
   - TransparentFX
