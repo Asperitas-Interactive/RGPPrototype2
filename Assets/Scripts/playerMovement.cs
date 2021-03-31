@@ -163,7 +163,7 @@ public class playerMovement : MonoBehaviour
 
     }
 
-    /*void FixedUpdate()
+    void FixedUpdate()
     {
         if (move.magnitude > 0.1f  &&transform.parent!=null)
         {
@@ -173,7 +173,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         //4 is water
         if (other.gameObject.layer == 4)
