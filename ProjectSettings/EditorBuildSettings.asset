@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: eb54180bc218d6648aa2bea815fa43ec
   - enabled: 1
-    path: Assets/Scenes/LoopScene.unity
-    guid: 90074af9f2ac70744a8d908e574ffb5c
+    path: Assets/Scenes/BuildScene.unity
+    guid: 4c8b7889a9706084896a157b2e027079
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: 288789eb45649624aadbef97128096c9
