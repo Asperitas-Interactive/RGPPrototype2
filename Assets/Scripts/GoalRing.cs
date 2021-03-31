@@ -6,10 +6,17 @@ public class GoalRing : MonoBehaviour
 {
     public Collectable collectable;
     public Ring[] Rings;
+    int rCount = 0;
+
     // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         collectable.gameObject.SetActive(false);
+        
+    }
+    void Start()
+    {
     }
 
     // Update is called once per frame
@@ -22,7 +29,6 @@ public class GoalRing : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            int rCount = 0;
             foreach(Ring r in Rings)
             {
                 if(r.ringCheck == true)
