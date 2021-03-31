@@ -15,12 +15,9 @@ public class playerMovement : MonoBehaviour
     public bool glide;
 
     //Movement Based Variables
-    public CharacterController controller;
     public float speed = 12.0f;
-    public float gravity = -9.81f;
     public float jumpHeight;
 
-    public Vector3 external;
 
     Vector3 velocity;
 
@@ -30,7 +27,7 @@ public class playerMovement : MonoBehaviour
 
     private Transform cam;
 
-    [Range(0f, -3.0f)]
+    [Range(0f, 20.0f)]
     public float glideFactor = -1.8f;
 
     Rigidbody rb;
@@ -45,6 +42,8 @@ public class playerMovement : MonoBehaviour
     Vector3 dir;
     Vector3 move;
 
+
+    float jumpTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,11 +56,15 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        jumpTimer -= Time.deltaTime;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
+
+        transform.GetChild(4).GetComponent<Animator>().SetFloat("inputX", x);
+        transform.GetChild(4).GetComponent<Animator>().SetFloat("inputY", y);
+
 
 
 
@@ -72,10 +75,10 @@ public class playerMovement : MonoBehaviour
         //}
 
         //Get input axes
-        
+
 
         //Move with local dir
-       
+
         move = new Vector3(x, 0f, y).normalized;
 
 
@@ -85,56 +88,80 @@ public class playerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            isJumping = false;
             canGlide = false;
             isGliding = false;
-        }
-
-
-        if (move.magnitude > 0.1f)
-        {
-            //transform.rotation = Quaternion.Euler(0f, smAngle, 0f);
-
-
-            dir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-            if(transform.parent == null)
+            // yield return new WaitForSeconds(0.5f);
+            if (jumpTimer < 0.0f)
             {
-                transform.forward = dir;
-                rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
+                isJumping = false;
+                transform.GetChild(4).GetComponent<Animator>().SetBool("isJumping", false);
+                transform.GetChild(4).GetComponent<Animator>().SetBool("isGliding", false);
 
             }
         }
 
-       
+        transform.GetChild(4).GetComponent<Animator>().SetFloat("speed", rb.velocity.magnitude);
+
+        transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
+
+        if (move.magnitude > 0.1f)
+        {
+
+
+            dir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+            if (transform.parent == null)
+            {
+                rb.velocity = new Vector3((dir * speed).x, rb.velocity.y, (dir * speed).z);
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.angularVelocity = Vector3.zero;
+        }
+
+
+
+
         //Fall down
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+           transform.GetChild(4).GetComponent<Animator>().SetBool("isJumping", true);
+
             isJumping = true;
+            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
             defaultPos = transform.position.y;
+            jumpTimer = 0.2f;
         }
+
+        if (isGrounded && !isJumping)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        }
+
 
         if (Input.GetButtonUp("Jump"))
         {
             canGlide = true;
-            glideTimer = 5.0f;
+            glideTimer = glideFactor;
         }
 
         if (Input.GetButton("Jump") && canGlide)
         {
             RaycastHit hit = new RaycastHit();
+            transform.GetChild(4).GetComponent<Animator>().SetBool("isGliding", true);
 
             glideTimer -= Time.deltaTime;
 
             float distToGround = 5f;
-            if(!isGliding)
+            if (!isGliding)
             {
-               if(Physics.Raycast(transform.position, -Vector3.up, out hit))
-               {
+                if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+                {
                     //Debug.Log(hit.distance);
                     distToGround = hit.distance;
-               }
+                }
 
                 rb.velocity = new Vector3(rb.velocity.x, -0.5f, rb.velocity.z);
 
@@ -144,8 +171,8 @@ public class playerMovement : MonoBehaviour
 
             Physics.Raycast(transform.position, -Vector3.up, out hit);
             currDist = hit.distance;
-            
-            if(glideTimer > 0.0f)
+
+            if (glideTimer > 0.0f)
             {
 
             }
@@ -160,18 +187,31 @@ public class playerMovement : MonoBehaviour
                 rb.AddForce(Vector3.up * 1f * Time.deltaTime, ForceMode.VelocityChange);
 
         }
+        else
+        {
+            transform.GetChild(4).GetComponent<Animator>().SetBool("isGliding", false);
+
+        }
+
 
     }
 
     void FixedUpdate()
     {
-        if (move.magnitude > 0.1f  &&transform.parent!=null)
+        if (transform.parent != null)
         {
+            if (move.magnitude > 0.1f)
+            {
+                rb.velocity = new Vector3((dir * speed).x, rb.velocity.y, (dir * speed).z);
 
-            transform.forward = dir;
-            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+            }
+
+            else
+            {
+                rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            }
         }
-    }
+    } 
 
     /*private void OnTriggerEnter(Collider other)
     {
