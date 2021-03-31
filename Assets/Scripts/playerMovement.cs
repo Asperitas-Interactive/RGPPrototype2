@@ -62,6 +62,10 @@ public class playerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+        transform.GetChild(4).GetComponent<Animator>().SetFloat("inputX", x);
+        transform.GetChild(4).GetComponent<Animator>().SetFloat("inputY", y);
+
+
 
 
         //if (!isGrounded)
@@ -91,6 +95,7 @@ public class playerMovement : MonoBehaviour
             {
                 isJumping = false;
                 transform.GetChild(4).GetComponent<Animator>().SetBool("isJumping", false);
+                transform.GetChild(4).GetComponent<Animator>().SetBool("isGliding", false);
 
             }
         }
@@ -145,6 +150,7 @@ public class playerMovement : MonoBehaviour
         if (Input.GetButton("Jump") && canGlide)
         {
             RaycastHit hit = new RaycastHit();
+            transform.GetChild(4).GetComponent<Animator>().SetBool("isGliding", true);
 
             glideTimer -= Time.deltaTime;
 
@@ -172,7 +178,7 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
-                rb.AddForce(Vector3.up * distToGround * -8 * Time.deltaTime, ForceMode.VelocityChange);
+                rb.AddForce(Vector3.up * distToGround * -3 * Time.deltaTime, ForceMode.VelocityChange);
             }
 
             if (rb.velocity.y < -1.0f)
@@ -181,8 +187,13 @@ public class playerMovement : MonoBehaviour
                 rb.AddForce(Vector3.up * 1f * Time.deltaTime, ForceMode.VelocityChange);
 
         }
+        else
+        {
+            transform.GetChild(4).GetComponent<Animator>().SetBool("isGliding", false);
 
-    
+        }
+
+
     }
 
     void FixedUpdate()
