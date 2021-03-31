@@ -52,7 +52,7 @@ public class MovePlat : MonoBehaviour
 
         if(pl)
         {
-            pl.external = VectorSpeed;
+
         }
     }
 

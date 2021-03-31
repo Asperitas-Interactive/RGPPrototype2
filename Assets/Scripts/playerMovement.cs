@@ -15,12 +15,9 @@ public class playerMovement : MonoBehaviour
     public bool glide;
 
     //Movement Based Variables
-    public CharacterController controller;
     public float speed = 12.0f;
-    public float gravity = -9.81f;
     public float jumpHeight;
 
-    public Vector3 external;
 
     Vector3 velocity;
 
@@ -30,7 +27,7 @@ public class playerMovement : MonoBehaviour
 
     private Transform cam;
 
-    [Range(0f, -3.0f)]
+    [Range(0f, 20.0f)]
     public float glideFactor = -1.8f;
 
     Rigidbody rb;
@@ -45,6 +42,8 @@ public class playerMovement : MonoBehaviour
     Vector3 dir;
     Vector3 move;
 
+
+    float jumpTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +56,7 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        jumpTimer -= Time.deltaTime;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -85,10 +84,15 @@ public class playerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            isJumping = false;
             canGlide = false;
             isGliding = false;
+            // yield return new WaitForSeconds(0.5f);
+            if (jumpTimer < 0.0f)
+                isJumping = false;
+
         }
+
+
 
         transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
 
@@ -105,22 +109,33 @@ public class playerMovement : MonoBehaviour
         else
         {
             rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.angularVelocity = Vector3.zero;
         }
+
+
 
 
         //Fall down
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+
             isJumping = true;
+            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
             defaultPos = transform.position.y;
+            jumpTimer = 0.2f;
         }
+
+        if (isGrounded && !isJumping)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        }
+
 
         if (Input.GetButtonUp("Jump"))
         {
             canGlide = true;
-            glideTimer = 5.0f;
+            glideTimer = glideFactor;
         }
 
         if (Input.GetButton("Jump") && canGlide)
@@ -153,7 +168,7 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
-                rb.AddForce(Vector3.up * distToGround * -3 * Time.deltaTime, ForceMode.VelocityChange);
+                rb.AddForce(Vector3.up * distToGround * -8 * Time.deltaTime, ForceMode.VelocityChange);
             }
 
             if (rb.velocity.y < -1.0f)
@@ -163,6 +178,7 @@ public class playerMovement : MonoBehaviour
 
         }
 
+    
     }
 
     void FixedUpdate()
