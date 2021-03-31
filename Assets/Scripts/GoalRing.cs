@@ -37,4 +37,12 @@ public class GoalRing : MonoBehaviour
             }
         }
     }
+
+    public void Reset()
+    {
+        foreach (Ring r in Rings)
+        {
+            r.Reset();
+        }
+    }
 }
