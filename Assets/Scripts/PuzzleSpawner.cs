@@ -10,6 +10,7 @@ public class PuzzleSpawner : MonoBehaviour
     public AudioSource Challenge;
     public string puzzletag;
     public float Timer = 20.0f;
+    public float maxTimer = 20.0f;
     private bool isTiming = false;
     private bool bActive = false;
     void Start()
@@ -27,6 +28,7 @@ public class PuzzleSpawner : MonoBehaviour
         if(isTiming == true)
         {
             Timer -= Time.deltaTime;
+            Challenge.pitch += 0.5f / 20f * Time.deltaTime;
         }
 
         if(Timer <= 0.0f)
@@ -65,8 +67,9 @@ public class PuzzleSpawner : MonoBehaviour
             }
             element.SetActive(false);
             isTiming = false;
-            Timer = 20.0f;
+            Timer = maxTimer;
             bActive = false;
+            Challenge.pitch = 1.0f;
             Challenge.Stop();
             OverWorld.Play();
         }
