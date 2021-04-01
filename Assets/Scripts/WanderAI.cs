@@ -36,6 +36,9 @@ public class WanderAI : MonoBehaviour
         timer -= Time.deltaTime;
         //transform.Translate(vel * Time.deltaTime);
         Vector3 velNor = vel.normalized;
+
+        transform.rotation = Quaternion.LookRotation(GetComponent<Rigidbody>().velocity);
+
         if ((MovePos - transform.localPosition).x < 0.1f && (MovePos - transform.localPosition).z < 0.1f)
         {
             timer = 0.0f;
