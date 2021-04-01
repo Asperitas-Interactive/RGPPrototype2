@@ -68,6 +68,8 @@ public class playerMovement : MonoBehaviour
 
 
 
+
+
         //if (!isGrounded)
         //{
         //    x = Input.GetAxis("Horizontal");
