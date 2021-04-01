@@ -28,10 +28,7 @@ public class PuzzleSpawner : MonoBehaviour
         if(isTiming == true)
         {
             Timer -= Time.deltaTime;
-            if (Timer <= 10.0f)
-            {
-                Challenge.pitch += 0.5f / 20f * Time.deltaTime;
-            }
+            Challenge.pitch += 0.5f / maxTimer * Time.deltaTime;
         }
 
         if(Timer <= 0.0f)
