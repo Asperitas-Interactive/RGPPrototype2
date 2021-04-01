@@ -50,5 +50,7 @@ public class GoalRing : MonoBehaviour
         {
             r.Reset();
         }
+
+        rCount = 0;
     }
 }
