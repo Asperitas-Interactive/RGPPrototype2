@@ -29,6 +29,16 @@ public class PuzzleSpawner : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
+        if(Timer <= 10.0f)
+        {
+            Challenge.pitch = 1.25f;
+        }
+
+        if(Timer <= 5.0f)
+        {
+            Challenge.pitch = 1.5f;
+        }
+
         if(Timer <= 0.0f)
         {
             PuzzleEnd();
@@ -68,6 +78,7 @@ public class PuzzleSpawner : MonoBehaviour
             Timer = 20.0f;
             bActive = false;
             Challenge.Stop();
+            Challenge.pitch = 1.0f;
             OverWorld.Play();
         }
     }
