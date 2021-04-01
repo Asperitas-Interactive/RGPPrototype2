@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Assets/Models/Rocks/RockTextures/MOD_Platform_PlatformTexture_MetallicSmoothness.png.meta
+guid: c2d63ac5550838049b86c1e8a488dfce
+=======
 guid: fe298e696e384f04ca82cd3dacfa7cc6
+>>>>>>> 571cbe3475a562cde141db4c789322cdb292910e:Assets/Assets/Models/Animals/Animal Materials/Bird_Metallic.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

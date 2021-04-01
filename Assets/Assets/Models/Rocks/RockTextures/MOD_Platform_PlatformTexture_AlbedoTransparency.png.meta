@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 09942d46a8f7eec4b9710c5642d45a5f
+<<<<<<< HEAD:Assets/Assets/Models/Rocks/RockTextures/MOD_Platform_PlatformTexture_Normal.png.meta
+guid: 34f24e4af00cbff439d8de55b5bcf5d0
+=======
+guid: 746f6bf1fb2ff594586cbe4050e819ec
+>>>>>>> 571cbe3475a562cde141db4c789322cdb292910e:Assets/Assets/Models/Rocks/RockTextures/MOD_Platform_PlatformTexture_AlbedoTransparency.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
