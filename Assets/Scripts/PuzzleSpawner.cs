@@ -6,6 +6,8 @@ public class PuzzleSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject[] puzzleElements;
+    public AudioSource OverWorld;
+    public AudioSource Challenge;
     public string puzzletag;
     public float Timer = 20.0f;
     private bool isTiming = false;
@@ -38,6 +40,8 @@ public class PuzzleSpawner : MonoBehaviour
         if (collision.gameObject.tag == "Player" && bActive == false)
         {
             PuzzleBegin();
+            Challenge.Play();
+            OverWorld.Stop();
         }
     }
 
@@ -63,6 +67,8 @@ public class PuzzleSpawner : MonoBehaviour
             isTiming = false;
             Timer = 20.0f;
             bActive = false;
+            Challenge.Stop();
+            OverWorld.Play();
         }
     }
 }
