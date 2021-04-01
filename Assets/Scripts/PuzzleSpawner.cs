@@ -25,23 +25,13 @@ public class PuzzleSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isTiming == true && Timer > 5.0f)
+        if(isTiming == true)
         {
             Timer -= Time.deltaTime;
-<<<<<<< Updated upstream
             if (Timer <= 10.0f)
             {
                 Challenge.pitch += 0.5f / maxTimer * Time.deltaTime;
             }
-=======
-            Challenge.pitch += 0.3f / maxTimer * Time.deltaTime;
-        }
-
-        else if(isTiming)
-        {
-            Timer -= Time.deltaTime;
-            Challenge.pitch += 0.4f / maxTimer * Time.deltaTime;
->>>>>>> Stashed changes
         }
 
         if(Timer <= 0.0f)
