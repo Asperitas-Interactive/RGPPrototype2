@@ -53,7 +53,7 @@ public class scatter : MonoBehaviour
         {
             animals[i].an.transform.rotation = Quaternion.LookRotation(animals[i].an.GetComponent<Rigidbody>().velocity);
            // animals[i].an.transform.rotation.eulerAngles -= new Vector390.0f;
-            if (((Return.position - animals[i].an.transform.position).magnitude > (animals[i].an.transform.position - animals[i].way.transform.position).magnitude) && !animals[i].an.GetComponent<WanderAI>().enabled)
+            if ((Return.position - animals[i].an.transform.position).magnitude >20.0f)
             {
                 //Animals.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 
