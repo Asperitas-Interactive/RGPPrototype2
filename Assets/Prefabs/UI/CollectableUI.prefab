@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d04ad3ce73ddf479f568a04737f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counted: 0
   Unchecked: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   Checked: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &6882426693971733913
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d04ad3ce73ddf479f568a04737f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counted: 0
   Unchecked: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   Checked: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &6882426694185090884
@@ -268,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d04ad3ce73ddf479f568a04737f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counted: 0
   Unchecked: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   Checked: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &6882426694558382524
@@ -358,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d04ad3ce73ddf479f568a04737f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counted: 0
   Unchecked: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   Checked: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &6882426694567755808
@@ -488,5 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59d04ad3ce73ddf479f568a04737f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counted: 0
   Unchecked: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   Checked: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
