@@ -7,6 +7,9 @@ TagManager:
   - plat
   - Puzzle1
   - Puzzle2
+  - Water
+  - Switch1
+  - Switch2
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - RenderTexture
   - 
   - 
   - 

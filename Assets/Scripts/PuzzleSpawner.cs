@@ -6,8 +6,11 @@ public class PuzzleSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject[] puzzleElements;
+    public AudioSource OverWorld;
+    public AudioSource Challenge;
     public string puzzletag;
     public float Timer = 20.0f;
+    public float maxTimer = 20.0f;
     private bool isTiming = false;
     private bool bActive = false;
     void Start()
@@ -25,6 +28,10 @@ public class PuzzleSpawner : MonoBehaviour
         if(isTiming == true)
         {
             Timer -= Time.deltaTime;
+            if (Timer <= 10.0f)
+            {
+                Challenge.pitch += 0.5f / maxTimer * Time.deltaTime;
+            }
         }
 
         if(Timer <= 0.0f)
@@ -38,6 +45,8 @@ public class PuzzleSpawner : MonoBehaviour
         if (collision.gameObject.tag == "Player" && bActive == false)
         {
             PuzzleBegin();
+            Challenge.Play();
+            OverWorld.Stop();
         }
     }
 
@@ -61,8 +70,11 @@ public class PuzzleSpawner : MonoBehaviour
             }
             element.SetActive(false);
             isTiming = false;
-            Timer = 20.0f;
+            Timer = maxTimer;
             bActive = false;
+            Challenge.Stop();
+            Challenge.pitch = 1.0f;
+            OverWorld.Play();
         }
     }
 }

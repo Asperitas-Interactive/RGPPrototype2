@@ -39,6 +39,7 @@ public class GoalRing : MonoBehaviour
 
             if(rCount == Rings.Length)
             {
+                GameObject.FindGameObjectWithTag("Switch2").GetComponent<PuzzleSpawner>().Timer = 0.0f;
                 collectable.gameObject.SetActive(true);
             }
         }
@@ -50,5 +51,7 @@ public class GoalRing : MonoBehaviour
         {
             r.Reset();
         }
+
+        rCount = 0;
     }
 }

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 173609955985859956}
   - component: {fileID: 1560880949272884320}
   - component: {fileID: 1560880949272884321}
+  - component: {fileID: 1847269306}
+  - component: {fileID: 6616964519273160429}
   m_Layer: 3
   m_Name: MOD_Temple
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830771685761844385}
-  m_LocalRotation: {x: 0.0019481083, y: -0.9235308, z: 0.0051328517, w: -0.38348502}
+  m_LocalRotation: {x: 0.0019488889, y: -0.92353046, z: 0.005136985, w: -0.3834858}
   m_LocalPosition: {x: 213.85, y: 100.7, z: 66.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -111,3 +113,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7856738817246405889, guid: 6dfcafde6389bc54083e7e42a113d84c, type: 3}
+--- !u!65 &1847269306
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830771685761844385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.226116, y: 8.053755, z: 4.2465878}
+  m_Center: {x: 0.0000014819578, y: 4.0268793, z: -5.481578}
+--- !u!114 &6616964519273160429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830771685761844385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ddd8e756bfd4c49b4b66eb327adf8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cc: {fileID: 0}

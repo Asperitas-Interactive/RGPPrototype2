@@ -68,6 +68,8 @@ public class playerMovement : MonoBehaviour
 
 
 
+
+
         //if (!isGrounded)
         //{
         //    x = Input.GetAxis("Horizontal");
@@ -211,7 +213,7 @@ public class playerMovement : MonoBehaviour
                 rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
             }
         }
-    } 
+    }
 
     /*private void OnTriggerEnter(Collider other)
     {
