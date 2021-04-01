@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CollectionCheck : MonoBehaviour
 {
     public CollectableCount[] counters;
+    public bool bFinished = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class CollectionCheck : MonoBehaviour
 
         if(collection == 5)
         {
-            SceneManager.LoadScene(2);
+            bFinished = true;
         }
     }
 }

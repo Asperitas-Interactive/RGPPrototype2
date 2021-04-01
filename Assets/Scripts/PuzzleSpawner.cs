@@ -69,8 +69,8 @@ public class PuzzleSpawner : MonoBehaviour
             isTiming = false;
             Timer = maxTimer;
             bActive = false;
-            Challenge.pitch = 1.0f;
             Challenge.Stop();
+            Challenge.pitch = 1.0f;
             OverWorld.Play();
         }
     }
