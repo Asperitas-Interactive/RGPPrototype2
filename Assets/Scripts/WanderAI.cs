@@ -22,18 +22,19 @@ public class WanderAI : MonoBehaviour
     private void OnEnable()
     {
         origin = transform.localPosition;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
 
     }
     private void OnDisable()
     {
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        transform.Translate(vel * Time.deltaTime);
+        //transform.Translate(vel * Time.deltaTime);
         Vector3 velNor = vel.normalized;
         if ((MovePos - transform.localPosition).x < 0.1f && (MovePos - transform.localPosition).z < 0.1f)
         {
@@ -42,7 +43,7 @@ public class WanderAI : MonoBehaviour
         if (timer <= 0.0f)
         {
             MovePos = RandomPositionInCircle(origin, 4);
-            vel = (MovePos - transform.localPosition).normalized * 2.0f;
+            GetComponent<Rigidbody>().velocity = (MovePos - transform.localPosition).normalized * 2.0f;
             //transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(vel.x, vel.z) * Mathf.Rad2Deg, 0f);
 
             timer = maxTimer;
