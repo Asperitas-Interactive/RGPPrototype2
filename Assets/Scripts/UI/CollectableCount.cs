@@ -7,15 +7,15 @@ public class CollectableCount : MonoBehaviour
 {
     public bool counted = false;
     [SerializeField]
-    private Sprite Unchecked;
+    private Texture Unchecked;
     [SerializeField]
-    private Sprite Checked;
-    private Image UIImage;
+    private Texture Checked;
+    private RawImage UIImage;
     // Start is called before the first frame update
     void Start()
     {
-        UIImage = GetComponent<Image>();
-        UIImage.sprite = Unchecked;
+        UIImage = GetComponent<RawImage>();
+        UIImage.texture = Unchecked;
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class CollectableCount : MonoBehaviour
 
     public void onCollection()
     {
-        UIImage.sprite = Checked;
+        UIImage.texture = Checked;
         counted = true;
     }
 }
